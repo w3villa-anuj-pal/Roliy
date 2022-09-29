@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg nav-background">
+  <%= link_to 'ROLIFY' , root_path , class: "navbar-brand text-white font-weight-bold", id: "logo" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto font-16">
+      <% if user_signed_in? %>
+        <% if current_user.has_role? :admin %>
+          <li class="nav-item active">
+            <%= link_to 'Create New Course',new_course_path, class: "nav-link text-white" %>
+          </li>
+        <% else %>
+        <% end %>
+      <% end %>
+      <li class="nav-item active">
+        <%= link_to 'View Course', courses_path  ,class: "nav-link text-white" %>
+      </li>
+    </li>
+    <li class="nav-item dropdown">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to 'Log out' , destroy_user_session_path , method: :delete , class: "nav-link text-white" %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to 'Log in' , user_session_path, class: "nav-link text-white" %>
+        </li>
+        <li>
+          <%= link_to 'Sign up' , new_user_registration_path, class: "nav-link text-white" %>
+        </li>
+      <% end %>
+    </li>
+    <li class="nav-item dropdown">
+      <% if user_signed_in? %>
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_user.first_name %>
+          <span>
+            <% if current_user.has_role? :admin %>
+              <span>[Admin]</span>
+            <% end %>
+          </span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to 'Edit Prfile' , edit_user_registration_path ,class: "dropdown-item" %>
+          <%= link_to 'My Courses' , enroll_course_index_path ,class: "dropdown-item" %>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      <% end %>
+    </li>
+  </ul>
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
+</nav>
