@@ -25,6 +25,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem "font-awesome-sass", "~> 6.2.0"
 gem "rolify"
+gem 'impressionist'
+gem "font-awesome-rails"
+gem 'rails-erd', group: :development
+
 
 
 # Use Active Storage variant

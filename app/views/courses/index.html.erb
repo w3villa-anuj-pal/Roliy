@@ -20,7 +20,8 @@
                 </div>
                 <div class="card-footer text-muted">
                   <small> Created <%= time_ago_in_words(course.created_at)%> ,
-                    Edited  <%= time_ago_in_words(course.updated_at)%>
+                    Edited  <%= time_ago_in_words(course.updated_at)%> ,
+                    <i class="fa fa-eye" aria-hidden="true"></i>&nbsp&nbsp&nbsp<%= course.impressionist_count(filter: :ip_address) %>
                   </small>
                 </div>
               </div>
